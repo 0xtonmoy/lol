@@ -1,11 +1,16 @@
-swagger: '2.0'
+openapi: 3.0.2
 info:
-  version: "0.0.1"
-  title: Example Title
-  description: <img src=x onerror="alert('XSS')">
+  version: "0.3.3"
+  title: VulnerableAPIXSSPayload
 paths:
-  /:
-    get:
-      responses:
-        200:
-          description: Successful response
+  "/vulnerable-xss-payload":
+    x-swagger-router-controller: vulnerable-ctrl  
+    get: 
+      summary: XSS Vulnerability Test Payload Endpoint  # name of the endpoint  
+      parameters:                     # sets of parameter definition, 'name', and type     [string]/[integer],etc)     
+        - name: firstName             # parameter name      
+          in : query                  # passed through url query string            `https://localhost/vulnerable?firstName=XXXX`          
+          description : Enter your First Name                        <script>alert("XSS PAYLOAD!");</script>       
+          required : true              # parameter is mandatory to pass                                                 type : string                                    # string data type                               schema                 <script>alert("XSS PAYLOAD!");</script>                         properties :                                       type : string                         example             YourFirstname                         description : enter your first name                 
+
+      responses:    # response messages from server            200 OK      message: DATA RECEIVED SUCCESSFULLY with XSS PAYLOAD
